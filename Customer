@@ -1,0 +1,62 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Customer {
+    private List<String> transactions;
+    private int currentLength;
+
+    public Customer(int currentLength) {
+        this.currentLength = currentLength;
+        this.transactions = new ArrayList<>(currentLength);
+    }
+
+    public void add(int index, String value) {
+        transactions.add(index, value);
+    }
+
+    public void remove(int index) {
+        if (isValid(index)) {
+            transactions.remove(index);
+        } else {
+            System.out.println("Invalid index");
+        }
+    }
+
+    public void search(int index) {
+        if (isValid(index)) {
+            String element = transactions.get(index);
+            System.out.println("Element at index " + index + ": " + element);
+        } else {
+            System.out.println("Invalid index");
+        }
+    }
+
+    public void print() {
+        System.out.println("String array:");
+        for (int i = 0; i < transactions.size(); i++) {
+            System.out.println("Element " + i + ": " + transactions.get(i));
+        }
+    }
+
+    private boolean isValid(int index) {
+        return index >= 0 && index < transactions.size();
+    }
+
+    public static void main(String[] args) {
+        Customer array = new Customer(5);
+        array.add(0, "A");
+        array.add(1, "B");
+        array.add(2, "C");
+
+        array.remove(1);
+        array.print();
+
+        array.search(0);
+    }
+}
+
+
+/*
+Створіть клас під назвою Customer , який має список об'єктів
+Transaction. Реалізувати методи додавання, видалення та пошуку транзакцій
+*/
