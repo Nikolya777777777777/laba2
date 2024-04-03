@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+enum Planet {
+    MERCURY(57.9),
+    VENUS(108.2),
+    EARTH(149.6),
+    MARS(227.9),
+    JUPITER(778.3),
+    SATURN(1427.0),
+    URANUS(2871.0),
+    NEPTUNE(4497.1),
+    PLUTO(5913.0);
+
+    private double distanceFromSun;
+
+    Planet(double distanceFromSun) {
+        this.distanceFromSun = distanceFromSun;
+    }
+
+    public double getDistanceFromSun() {
+        return distanceFromSun;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("The list of planets:");
+        for (Planet planet : Planet.values()) {
+            System.out.println(planet);
+        }
+
+        System.out.print("Write name of the planet: ");
+        String inputPlanet = scanner.nextLine().toUpperCase();
+
+        Planet selectedPlanet = Planet.valueOf(inputPlanet);
+        System.out.println("Distance from Sun to Planet " + selectedPlanet + " - " + selectedPlanet.getDistanceFromSun() + " millions kilometers.");
+
+    }
+}
+
+/*
+Створіть enum під назвою `Planet` зі значеннями
+MERCURY, VENUS, EARTH, MARS, JUPITER, SATURN, URANUS, NEPTUNE, and PLUTO.
+Напишіть програму, яка приймає дані користувача та повертає
+відповідну відстань від сонця (у мільйонах км)
+*/
