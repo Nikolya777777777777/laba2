@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
+public class Customer {
     private List<String> transactions;
     private int currentLength;
 
-    public Main(int currentLength) {
+    public Customer(int currentLength) {
         this.currentLength = currentLength;
         this.transactions = new ArrayList<>(currentLength);
     }
@@ -48,9 +48,9 @@ public class Main {
 
         System.out.print("Enter current length of the list: ");
         int currentLength = scanner.nextInt();
-        scanner.nextLine(); // Clear buffer
+        scanner.nextLine();
 
-        Main main = new Main(currentLength);
+        Customer customer = new Customer(currentLength);
 
         boolean exit = false;
         while (!exit) {
@@ -66,22 +66,22 @@ public class Main {
                     scanner.nextLine(); // Clear buffer
                     System.out.print("Enter value to add: ");
                     String valueToAdd = scanner.nextLine();
-                    main.add(indexToAdd, valueToAdd);
+                    customer.add(indexToAdd, valueToAdd);
                     System.out.println("Transaction added successfully.");
                     break;
                 case 2:
                     System.out.print("Enter index to remove: ");
                     int indexToRemove = scanner.nextInt();
-                    main.remove(indexToRemove);
+                    customer.remove(indexToRemove);
                     System.out.println("Transaction removed successfully.");
                     break;
                 case 3:
                     System.out.print("Enter index to search: ");
                     int indexToSearch = scanner.nextInt();
-                    main.search(indexToSearch);
+                    customer.search(indexToSearch);
                     break;
                 case 4:
-                    main.print();
+                    customer.print();
                     break;
                 case 5:
                     exit = true;
