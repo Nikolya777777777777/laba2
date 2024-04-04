@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
-public class Customer {
+public class Main {
     private List<String> transactions;
     private int currentLength;
 
-    public Customer(int currentLength) {
+    public Main(int currentLength) {
         this.currentLength = currentLength;
         this.transactions = new ArrayList<>(currentLength);
     }
@@ -43,20 +44,60 @@ public class Customer {
     }
 
     public static void main(String[] args) {
-        Customer array = new Customer(5);
-        array.add(0, "A");
-        array.add(1, "B");
-        array.add(2, "C");
+        Scanner scanner = new Scanner(System.in);
 
-        array.remove(1);
-        array.print();
+        System.out.print("Enter current length of the list: ");
+        int currentLength = scanner.nextInt();
+        scanner.nextLine(); // Clear buffer
 
-        array.search(0);
+        Main main = new Main(currentLength);
+
+        boolean exit = false;
+        while (!exit) {
+            printMenu();
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Clear buffer
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter index to add: ");
+                    int indexToAdd = scanner.nextInt();
+                    scanner.nextLine(); // Clear buffer
+                    System.out.print("Enter value to add: ");
+                    String valueToAdd = scanner.nextLine();
+                    main.add(indexToAdd, valueToAdd);
+                    System.out.println("Transaction added successfully.");
+                    break;
+                case 2:
+                    System.out.print("Enter index to remove: ");
+                    int indexToRemove = scanner.nextInt();
+                    main.remove(indexToRemove);
+                    System.out.println("Transaction removed successfully.");
+                    break;
+                case 3:
+                    System.out.print("Enter index to search: ");
+                    int indexToSearch = scanner.nextInt();
+                    main.search(indexToSearch);
+                    break;
+                case 4:
+                    main.print();
+                    break;
+                case 5:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a number from 1 to 5.");
+            }
+        }
+    }
+
+    private static void printMenu() {
+        System.out.println("Menu:");
+        System.out.println("1. Add transaction");
+        System.out.println("2. Remove transaction");
+        System.out.println("3. Search transaction");
+        System.out.println("4. Print transactions");
+        System.out.println("5. Exit");
     }
 }
-
-
-/*
-Створіть клас під назвою Customer , який має список об'єктів
-Transaction. Реалізувати методи додавання, видалення та пошуку транзакцій
-*/
